@@ -18,10 +18,11 @@ export const SITE = {
   whatsappNumber: "5492266478000",
 };
 
-// Dominio real del sitio una vez publicado. Placeholder hasta que Santi
-// conecte el dominio final — actualizar acá y todo el SEO (canonical, OG,
-// JSON-LD) se actualiza solo.
-export const SITE_URL = "https://fox-balcarce.com.ar";
+// Dominio real del sitio una vez publicado. Hoy apunta al subdominio
+// gratuito de Vercel (gimnasiofox.vercel.app). Si más adelante conectan un
+// dominio propio (ej. fox-balcarce.com.ar), actualizar solo esta línea y
+// todo el SEO (canonical, OG, sitemap, JSON-LD) se actualiza solo.
+export const SITE_URL = "https://gimnasiofox.vercel.app";
 
 export const INSTAGRAM = {
   handle: "@centro_de_entrenamiento_fox",
