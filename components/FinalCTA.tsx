@@ -21,10 +21,10 @@ export default function FinalCTA() {
             Sumate hoy
           </p>
           <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight text-fox-white sm:text-5xl">
-            Tu mejor versión empieza en {SITE.city}.
+            Tu mejor versión empieza en {SITE.name}.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-fox-gray sm:text-lg">
-            Escribinos por WhatsApp y coordinamos tu primera visita a FOX.
+            Escribinos por WhatsApp y coordinamos tu primera visita al mejor gimnasio de Balcarce.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
