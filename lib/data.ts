@@ -1,0 +1,395 @@
+// ============================================================================
+// CENTRO DE ENTRENAMIENTO FOX — contenido central del sitio
+// Editar este archivo para actualizar textos, precios u horarios sin tocar
+// el markup de los componentes.
+// ============================================================================
+
+export const SITE = {
+  name: "FOX",
+  fullName: "Centro de Entrenamiento FOX",
+  slogan: "El gimnasio más completo de Balcarce",
+  city: "Balcarce",
+  province: "Buenos Aires, Argentina",
+  owner: "Francisco Balinotti",
+  phoneDisplay: "+54 2266 47-8000",
+  // Assumption: WhatsApp para Argentina requiere el 9 luego del código de país
+  // para números vinculados a líneas móviles. Verificar en WhatsApp Business
+  // que este formato conecte correctamente antes de publicar.
+  whatsappNumber: "5492266478000",
+};
+
+// Dominio real del sitio una vez publicado. Placeholder hasta que Santi
+// conecte el dominio final — actualizar acá y todo el SEO (canonical, OG,
+// JSON-LD) se actualiza solo.
+export const SITE_URL = "https://fox-balcarce.com.ar";
+
+export const INSTAGRAM = {
+  handle: "@centro_de_entrenamiento_fox",
+  url: "https://www.instagram.com/centro_de_entrenamiento_fox/",
+};
+
+export type SocialLink = {
+  id: "instagram" | "facebook" | "youtube";
+  label: string;
+  handle: string;
+  url: string;
+  // Aclaración honesta: Facebook y YouTube son del perfil personal de
+  // Francisco (el profesor/dueño), no una página dedicada al gimnasio.
+  note?: string;
+};
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  {
+    id: "instagram",
+    label: "Instagram",
+    handle: INSTAGRAM.handle,
+    url: INSTAGRAM.url,
+  },
+  {
+    id: "facebook",
+    label: "Facebook",
+    handle: "Francisco Balinotti",
+    url: "https://www.facebook.com/francisco.balinotti",
+    note: "Perfil del profesor",
+  },
+  {
+    id: "youtube",
+    label: "YouTube",
+    handle: "@franciscobalinotti5560",
+    url: "https://www.youtube.com/@franciscobalinotti5560",
+    note: "Contenido del profesor",
+  },
+];
+
+// No se proveyó la dirección exacta directamente, así que `streetAddress` se
+// completó con lo que aparece en un listado público (Wellhub) para "Centro de
+// Entrenamiento Fox" en Balcarce. Verificar que sea correcto antes de
+// publicar — si está mal, corregirlo acá y se actualiza en todo el sitio.
+export const ADDRESS = {
+  streetAddress: "Calle 17 774", // ⚠️ confirmar — fuente: listado de Wellhub, no confirmado por el cliente
+  addressLocality: "Balcarce",
+  addressRegion: "Buenos Aires",
+  postalCode: "7620",
+  addressCountry: "AR",
+};
+
+// Coordenadas y links reales, tomados directamente del Google Maps del
+// negocio (confiables al 100%, a diferencia de la dirección de arriba).
+export const MAPS = {
+  latitude: -37.84628021982904,
+  longitude: -58.26695703316607,
+  shortLink: "https://maps.app.goo.gl/BHdRJSE6Px1tDSML8",
+  embedSrc:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.598673107509!2d-58.26695703316607!3d-37.84628021982904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959aaf1721b902ad%3A0xb76d7dc41a7222b1!2sFox!5e0!3m2!1ses-419!2sar!4v1783465336537!5m2!1ses-419!2sar",
+};
+
+export const whatsappLink = (message: string) =>
+  `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+export const WHATSAPP_MESSAGES = {
+  general: "Hola FOX! Quiero sumarme al gimnasio, ¿me pasan información? 💪",
+  plans: "Hola! Quiero consultar por los planes y precios de FOX.",
+  visit: "Hola! Quiero coordinar una visita para conocer las instalaciones.",
+  routine: "Hola! Quiero solicitar mi rutina de entrenamiento personalizada.",
+};
+
+// Horario. Asunción: se muestra el mismo rango todos los días activos.
+// No se especificaron días exactos en el brief — ajustar `days` si el
+// gimnasio no abre los domingos o tiene un horario reducido los sábados.
+export const SCHEDULE = {
+  openTime: "06:30",
+  closeTime: "21:00",
+  days: [
+    { label: "Lunes a Viernes", hours: "06:30 – 21:00" },
+    { label: "Sábados", hours: "06:30 – 21:00" },
+    { label: "Domingos", hours: "Cerrado" },
+  ],
+  // 0 = Domingo ... 6 = Sábado
+  openDays: [1, 2, 3, 4, 5, 6],
+};
+
+export type Plan = {
+  id: string;
+  name: string;
+  price: number;
+  frequency: string;
+  featured?: boolean;
+  perks: string[];
+};
+
+export const PLANS: Plan[] = [
+  {
+    id: "pase-libre",
+    name: "Pase Libre",
+    price: 45000,
+    frequency: "Acceso todos los días",
+    featured: true,
+    perks: [
+      "Sin límite de días por semana",
+      "Sector musculación + aeróbico",
+      "Seguimiento de rutina incluido",
+    ],
+  },
+  {
+    id: "plan-3x",
+    name: "3 veces por semana",
+    price: 40000,
+    frequency: "3 días semanales",
+    perks: [
+      "Ideal para rutinas combinadas",
+      "Acceso a todos los sectores",
+      "Seguimiento de rutina incluido",
+    ],
+  },
+  {
+    id: "plan-2x",
+    name: "2 veces por semana",
+    price: 35000,
+    frequency: "2 días semanales",
+    perks: [
+      "Para empezar con constancia",
+      "Acceso a todos los sectores",
+      "Seguimiento de rutina incluido",
+    ],
+  },
+];
+
+export const KEY_ONBOARDING = {
+  price: 3000,
+  note: "Reposición de llave de ingreso personal",
+};
+
+export type Facility = {
+  id: string;
+  title: string;
+  description: string;
+  icon: "dumbbell" | "activity" | "trees" | "shower" | "lock" | "bike";
+};
+
+export const FACILITIES: Facility[] = [
+  {
+    id: "musculacion",
+    title: "Sector musculación",
+    description: "Equipamiento de calidad para fuerza e hipertrofia, con espacio pensado para entrenar cómodo.",
+    icon: "dumbbell",
+  },
+  {
+    id: "aerobico",
+    title: "Sector aeróbico",
+    description: "Zona dedicada al trabajo cardiovascular, integrada al resto de la sala de entrenamiento.",
+    icon: "activity",
+  },
+  {
+    id: "patios",
+    title: "2 patios internos",
+    description: "Espacios al aire libre dentro del predio, ideales para entrada en calor y trabajo funcional.",
+    icon: "trees",
+  },
+  {
+    id: "duchas",
+    title: "Duchas",
+    description: "Vestuarios con duchas disponibles para antes o después de entrenar.",
+    icon: "shower",
+  },
+  {
+    id: "lockers",
+    title: "Lockers",
+    description: "Guardado seguro para tus pertenencias mientras entrenás.",
+    icon: "lock",
+  },
+  {
+    id: "bicicletas",
+    title: "Guardado de bicicletas",
+    description: "Espacio reservado para dejar tu bici de forma segura durante el entrenamiento.",
+    icon: "bike",
+  },
+];
+
+export type Service = {
+  id: string;
+  title: string;
+  description: string;
+  icon: "clipboard" | "zap" | "shield" | "stethoscope" | "key" | "thermometer";
+};
+
+export const SERVICES: Service[] = [
+  {
+    id: "seguimiento",
+    title: "Seguimiento de rutinas",
+    description: "Profesores atentos que acompañan tu progreso y ajustan tu rutina en el tiempo.",
+    icon: "clipboard",
+  },
+  {
+    id: "desfibrilador",
+    title: "Desfibrilador",
+    description: "Equipamiento de emergencia disponible en el predio para entrenar con tranquilidad.",
+    icon: "zap",
+  },
+  {
+    id: "assistem",
+    title: "Área protegida Assistem",
+    description: "Predio bajo sistema de protección Assistem para mayor seguridad de los socios.",
+    icon: "shield",
+  },
+  {
+    id: "cobertura",
+    title: "Cobertura médica",
+    description: "Cobertura pensada para que entrenes con la respaldo que corresponde.",
+    icon: "stethoscope",
+  },
+  {
+    id: "ingreso",
+    title: "Ingreso con llave personal",
+    description: "Acceso individual mediante llave propia. Reposición ante pérdida: $3.000.",
+    icon: "key",
+  },
+  {
+    id: "confort",
+    title: "Confort todo el año",
+    description: "Ventiladores en verano y calefacción en invierno para entrenar en cualquier época.",
+    icon: "thermometer",
+  },
+];
+
+export const PAYMENT_METHODS = ["Efectivo", "Transferencia", "Tarjeta de crédito"];
+
+export type Testimonial = {
+  id: string;
+  quote: string;
+  author: string;
+  rating: number;
+};
+
+// Reseñas reales de Google del negocio. Se excluyó a propósito la de Rubén
+// Oscar Sánchez ("Muy lindo lugar, atención pobre") — es una crítica de
+// servicio real y no corresponde mostrarla en la propia landing, pero vale
+// la pena que el gimnasio la revise puertas adentro.
+export const TESTIMONIAL_ROWS: { id: string; direction: "left" | "right"; duration: number; items: Testimonial[] }[] = [
+  {
+    id: "row-1",
+    direction: "left",
+    duration: 50,
+    items: [
+      { id: "r1", author: "Claudio Carillo", rating: 5, quote: "El mejor y más completo gimnasio de Balcarce." },
+      { id: "r2", author: "Naza Heavymetal", rating: 5, quote: "Gran variedad de máquinas y los entrenadores están atentos para guiar a los principiantes." },
+      { id: "r3", author: "Alberto Lantaño", rating: 5, quote: "Excelente. Máquinas de sobra, muy buena predisposición de quienes están a cargo y sin problemas con los horarios." },
+      { id: "r4", author: "Anabel Fioriti", rating: 5, quote: "Muy equipado y los profes unos genios. Muy recomendable." },
+      { id: "r5", author: "Elian Sandoval", rating: 5, quote: "El mejor gym sin duda alguna. Una gran comunidad te espera." },
+      { id: "r6", author: "Mayra Pacheco", rating: 5, quote: "Un gimnasio muy completo y una atención espectacular." },
+      { id: "r7", author: "Roxana Maldonado", rating: 5, quote: "El mejor gym de Balcarce. Buenas máquinas y muy buen control." },
+      { id: "r8", author: "Agustín Pueblas", rating: 5, quote: "Excelente servicio. Entrenadores atentos." },
+      { id: "r9", author: "Monijor Caro", rating: 5, quote: "Está bueno para todas las actividades." },
+    ],
+  },
+  {
+    id: "row-2",
+    direction: "right",
+    duration: 56,
+    items: [
+      { id: "r10", author: "Nahuel Lapalma", rating: 5, quote: "El mejor gym de la ciudad." },
+      { id: "r11", author: "Sebastián Blanco", rating: 5, quote: "Una masa." },
+      { id: "r12", author: "Susana Inés Gioffre", rating: 5, quote: "Saludable mentalmente y físicamente." },
+      { id: "r13", author: "Jonathan", rating: 5, quote: "El mejor gimnasio de Balcarce." },
+      { id: "r14", author: "Florencia Diez De Ulzurrun", rating: 5, quote: "Excelente atención." },
+      { id: "r15", author: "Karen Eriksen", rating: 5, quote: "Muy completo." },
+      { id: "r16", author: "Laura Inés Hamdan", rating: 5, quote: "Excelente." },
+      { id: "r17", author: "Diego Tamagno", rating: 5, quote: "Excelente." },
+      { id: "r18", author: "Martín Yan", rating: 5, quote: "Mejor gimnasio." },
+    ],
+  },
+  {
+    id: "row-3",
+    direction: "left",
+    duration: 62,
+    items: [
+      { id: "r19", author: "Silvia Zarate", rating: 5, quote: "El mejor gimnasio." },
+      { id: "r20", author: "Nicolás M. Barra Pelecano", rating: 5, quote: "Muy completo." },
+      { id: "r21", author: "Luis Abel Saracho", rating: 5, quote: "¡Excelente!" },
+      { id: "r22", author: "Martín Gual", rating: 5, quote: "Uno de los más nuevos y con muchas alternativas para entrenar sin tener que esperar máquinas. Además, el precio mensual es accesible." },
+      { id: "r23", author: "Pino Chorén", rating: 5, quote: "Muy buen gym." },
+      { id: "r24", author: "Eric Acosta", rating: 5, quote: "Están muy buenas las máquinas." },
+      { id: "r25", author: "Federico Guerra", rating: 5, quote: "Un gimnasio muy completo en zona céntrica de la ciudad." },
+      { id: "r26", author: "Nancy Isla", rating: 5, quote: "¡Me encanta! Desconecto del mundo." },
+      { id: "r27", author: "Facundo Di Pompo", rating: 5, quote: "Buen lugar para entrenar." },
+    ],
+  },
+];
+
+export type FAQItem = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+export const FAQS: FAQItem[] = [
+  {
+    id: "planes",
+    question: "¿Qué planes tiene FOX?",
+    answer:
+      "Tenés tres opciones: Pase Libre (acceso todos los días) a $45.000, un plan de 3 veces por semana a $40.000 y un plan de 2 veces por semana a $35.000. Todos incluyen acceso a musculación, aeróbico y seguimiento de rutina.",
+  },
+  {
+    id: "ingreso",
+    question: "¿Cómo es el ingreso al gimnasio?",
+    answer:
+      "El ingreso es mediante una llave personal que se entrega a cada socio. Si la perdés, la reposición tiene un costo de $3.000.",
+  },
+  {
+    id: "pagos",
+    question: "¿Qué medios de pago aceptan?",
+    answer: "Podés pagar en efectivo, por transferencia bancaria o con tarjeta de crédito.",
+  },
+  {
+    id: "horarios",
+    question: "¿Cuál es el horario de atención?",
+    answer:
+      "FOX abre de 06:30 a 21:00. Podés escribirnos por WhatsApp para confirmar disponibilidad en el horario que prefieras.",
+  },
+  {
+    id: "seguridad",
+    question: "¿Qué medidas de seguridad tiene el predio?",
+    answer:
+      "Contamos con desfibrilador en el predio, área protegida por el sistema Assistem y cobertura médica, además de acompañamiento profesional en cada rutina.",
+  },
+  {
+    id: "comodidades",
+    question: "¿Tienen duchas y lockers?",
+    answer:
+      "Sí, el predio cuenta con duchas, lockers para guardar tus pertenencias y un espacio exclusivo para guardar bicicletas.",
+  },
+];
+
+export const NAV_LINKS = [
+  { href: "#instalaciones", label: "Instalaciones" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#planes", label: "Planes" },
+  { href: "#galeria", label: "Galería" },
+  { href: "#horarios", label: "Horarios" },
+  { href: "#ubicacion", label: "Ubicación" },
+  { href: "#faq", label: "FAQ" },
+];
+
+export type HeroHighlight = {
+  id: string;
+  title: string;
+  icon: "dumbbell" | "userCheck" | "users";
+};
+
+export const HERO_HIGHLIGHTS: HeroHighlight[] = [
+  { id: "equipamiento", title: "Equipamiento de primer nivel", icon: "dumbbell" },
+  { id: "profesores", title: "Profesores calificados", icon: "userCheck" },
+  { id: "comunidad", title: "Comunidad que motiva", icon: "users" },
+];
+
+export const MARQUEE_ITEMS = [
+  "MUSCULACIÓN",
+  "ENTRENAMIENTO FUNCIONAL",
+  "COMUNIDAD FOX",
+  "SEGUIMIENTO PERSONALIZADO",
+  "AERÓBICO",
+  "CONSTANCIA",
+  "BALCARCE",
+];
+
+export const currency = (value: number) =>
+  `$${new Intl.NumberFormat("es-AR", { maximumFractionDigits: 0 }).format(value)}`;
