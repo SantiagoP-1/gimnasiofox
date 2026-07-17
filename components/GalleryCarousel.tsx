@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState, useEffect, type CSSProperties } from "react";
+import { useRef, useState, useEffect, type CSSProperties } from "react";
 import Image, { type StaticImageData } from "next/image";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -50,9 +50,16 @@ function Slide({ slide, index, current, total, onSelect }: SlideProps) {
       ref={slideRef}
       role="group"
       aria-roledescription="slide"
-      aria-label={`${index + 1} de ${total}`}
-      className="relative mx-3 flex h-72 w-72 shrink-0 flex-col items-center justify-center [perspective:1200px] sm:h-96 sm:w-96 lg:h-[26rem] lg:w-[26rem]"
+      aria-label={`${slide.title} — ${index + 1} de ${total}`}
+      tabIndex={0}
+      className="relative mx-3 flex h-72 w-72 shrink-0 flex-col items-center justify-center [perspective:1200px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fox-gold sm:h-96 sm:w-96 lg:h-[26rem] lg:w-[26rem]"
       onClick={() => onSelect(index)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onSelect(index);
+        }
+      }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={
@@ -105,7 +112,6 @@ export function GalleryCarousel({ slides }: { slides: CarouselSlide[] }) {
   const [offset, setOffset] = useState(0);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLUListElement>(null);
-  const id = useId();
 
   const goTo = (index: number) => setCurrent(((index % slides.length) + slides.length) % slides.length);
   const previous = () => goTo(current - 1);
@@ -124,18 +130,28 @@ export function GalleryCarousel({ slides }: { slides: CarouselSlide[] }) {
     return () => window.removeEventListener("resize", recalc);
   }, [current, slides.length]);
 
-  useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") previous();
-      if (e.key === "ArrowRight") next();
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [current, slides.length]);
+  // Sin listener en `window`: las flechas del teclado solo navegan el
+  // carrusel cuando el foco está dentro de él (el evento burbujea desde el
+  // botón o la slide enfocada), no en cualquier parte de la página.
+  const handleContainerKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      previous();
+    }
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      next();
+    }
+  };
 
   return (
-    <div aria-roledescription="carousel" aria-labelledby={`gallery-carousel-${id}`} className="relative">
+    <div
+      role="region"
+      aria-label="Galería de fotos del gimnasio"
+      aria-roledescription="carousel"
+      onKeyDown={handleContainerKeyDown}
+      className="relative"
+    >
       <div ref={viewportRef} className="fox-fade-edges overflow-hidden">
         <ul
           ref={trackRef}
@@ -158,7 +174,7 @@ export function GalleryCarousel({ slides }: { slides: CarouselSlide[] }) {
           <ArrowRight className="h-4 w-4 rotate-180" aria-hidden="true" />
         </button>
 
-        <span className="text-sm text-fox-gray-dim">
+        <span className="text-sm text-fox-gray-dim" aria-live="polite" aria-atomic="true">
           {current + 1} / {slides.length}
         </span>
 

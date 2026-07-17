@@ -25,7 +25,7 @@ export default function Facilities() {
           {FACILITIES.map((facility) => {
             const Icon = ICONS[facility.icon];
             return (
-              <li key={facility.id} className="group bg-fox-charcoal p-7 transition-colors duration-300 hover:bg-fox-charcoal-2">
+              <li key={facility.id} className="bg-fox-charcoal p-7 transition-colors duration-300 hover:bg-fox-charcoal-2">
                 <Icon className="h-5 w-5 text-fox-gold" strokeWidth={1.8} aria-hidden="true" />
                 <h3 className="mt-5 font-display text-lg font-semibold text-fox-white">{facility.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-fox-gray">{facility.description}</p>

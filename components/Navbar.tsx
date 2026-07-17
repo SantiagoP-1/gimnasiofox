@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { NAV_LINKS, WHATSAPP_MESSAGES, whatsappLink } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import logo from "@/public/images/logo-white.png";
+import logo from "@/public/images/logo-white.webp";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,7 +37,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
         <a href="#inicio" aria-label="Centro de Entrenamiento FOX — inicio">
-          <Image src={logo} alt="Centro de Entrenamiento FOX" className="h-9 w-auto sm:h-10" priority />
+          <Image src={logo} alt="Centro de Entrenamiento FOX" className="h-9 w-auto sm:h-10" sizes="160px" />
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">

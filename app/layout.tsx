@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@fontsource/poppins/500.css";
 import "@fontsource/poppins/600.css";
 import "@fontsource/poppins/700.css";
@@ -14,7 +14,13 @@ import { SITE, SITE_URL } from "@/lib/data";
 
 const title = "Centro de Entrenamiento FOX | Gimnasio en Balcarce";
 const description =
-  "Centro de Entrenamiento FOX: el gimnasio más completo de Balcarce. Musculación, entrenamiento personalizado y fitness en Balcarce, con seguimiento de rutinas y una gran comunidad.";
+  "El gimnasio más completo de Balcarce: musculación, entrenamiento personalizado y fitness, con seguimiento de rutinas y una gran comunidad.";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0d0d0d",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -57,6 +63,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: `${SITE.fullName} — ${SITE.slogan}`,
+        type: "image/jpeg",
       },
     ],
   },

@@ -4,7 +4,7 @@ import { HERO_HIGHLIGHTS, SITE, WHATSAPP_MESSAGES, whatsappLink, type HeroHighli
 import OpenStatus from "@/components/OpenStatus";
 import Reveal from "@/components/Reveal";
 import heroImg from "@/public/images/hero.webp";
-import foxMark from "@/public/images/logo-fox-mark.png";
+import foxMark from "@/public/images/logo-fox-mark.webp";
 
 const HIGHLIGHT_ICONS: Record<HeroHighlight["icon"], typeof Dumbbell> = {
   dumbbell: Dumbbell,
@@ -43,10 +43,11 @@ export default function Hero() {
 
         <Reveal delay={0.16}>
           <h1 className="mt-3 max-w-md sm:max-w-lg md:max-w-xl">
+            <span className="sr-only">FOX</span>
             <Image
               src={foxMark}
-              alt="Centro de Entrenamiento FOX"
-              priority
+              alt=""
+              aria-hidden="true"
               className="h-auto w-full"
             />
           </h1>

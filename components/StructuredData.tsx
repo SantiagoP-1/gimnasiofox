@@ -46,7 +46,7 @@ export default function StructuredData() {
     slogan: SITE.slogan,
     url: SITE_URL,
     image: `${SITE_URL}/images/og-image.jpg`,
-    logo: `${SITE_URL}/images/logo-mark.png`,
+    logo: `${SITE_URL}/images/logo-mark.webp`,
     telephone: `+${SITE.whatsappNumber}`,
     priceRange: "$$",
     currenciesAccepted: "ARS",

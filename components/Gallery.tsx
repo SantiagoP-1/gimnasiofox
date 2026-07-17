@@ -1,10 +1,15 @@
+import dynamic from "next/dynamic";
 import SectionHeader from "@/components/SectionHeader";
-import { GalleryCarousel, type CarouselSlide } from "@/components/GalleryCarousel";
+import type { CarouselSlide } from "@/components/GalleryCarousel";
 import musculacion from "@/public/images/gallery-musculacion.webp";
 import aerobico from "@/public/images/gallery-aerobico-ai.webp";
 import comunidad from "@/public/images/gallery-comunidad-ai.webp";
 import equipamiento from "@/public/images/gallery-equipamiento-ai.webp";
 import pesas from "@/public/images/gallery-pesas-ai.webp";
+
+const GalleryCarousel = dynamic(() =>
+  import("@/components/GalleryCarousel").then((mod) => mod.GalleryCarousel)
+);
 
 // Nota para Santi: las marcadas como ilustrativas son generadas con IA
 // (mientras no haya fotos reales de esos sectores). La de "Sector

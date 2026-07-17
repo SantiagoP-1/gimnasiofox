@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { SITE, NAV_LINKS, SOCIAL_LINKS, WHATSAPP_MESSAGES, whatsappLink } from "@/lib/data";
-import logo from "@/public/images/logo-white.png";
+import logo from "@/public/images/logo-white.webp";
 import { FacebookGlyph, InstagramGlyph, YoutubeGlyph, WhatsAppGlyph } from "@/components/icons/SocialGlyphs";
 
 const SOCIAL_ICONS = {

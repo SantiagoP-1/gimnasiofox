@@ -12,10 +12,7 @@ type CountUpProps = {
 
 export default function CountUp({ value, suffix = "", decimals = 0, duration = 1.4 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, {
-          once: true,
-          amount: 0.3,
-        });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
   const motionValue = useMotionValue(0);
   const [display, setDisplay] = useState((0).toFixed(decimals));
 

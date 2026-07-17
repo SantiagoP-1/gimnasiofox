@@ -41,7 +41,7 @@ export default function Stats() {
               <div className="flex flex-col gap-3">
                 <stat.icon className="h-6 w-6 text-fox-gold" strokeWidth={2} aria-hidden="true" />
                 <p className="font-display text-4xl font-extrabold text-fox-white sm:text-5xl">
-                  <CountUp value={stat.value} suffix={stat.suffix} decimals={stat.value % 1 !== 0 ? 1 : 0} />
+                  <CountUp value={stat.value} suffix={stat.suffix} decimals={stat.decimals ?? 0} />
                 </p>
                 <p className="max-w-[20ch] text-sm text-fox-gray">{stat.label}</p>
               </div>

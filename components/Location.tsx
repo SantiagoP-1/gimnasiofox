@@ -1,6 +1,7 @@
 import { MapPin, Navigation, AtSign } from "lucide-react";
 import { SITE, ADDRESS, MAPS, INSTAGRAM } from "@/lib/data";
 import SectionHeader from "@/components/SectionHeader";
+import MapEmbed from "@/components/MapEmbed";
 
 export default function Location() {
   return (
@@ -14,13 +15,7 @@ export default function Location() {
 
         <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="h-80 overflow-hidden rounded-lg border border-white/8 sm:h-full">
-            <iframe
-              title="Ubicación de Centro de Entrenamiento FOX en Balcarce"
-              src={MAPS.embedSrc}
-              className="h-full w-full grayscale invert-[0.92] contrast-[1.1]"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <MapEmbed src={MAPS.embedSrc} title="Ubicación de Centro de Entrenamiento FOX en Balcarce" />
           </div>
 
           <div className="flex h-full flex-col justify-between rounded-lg border border-white/8 bg-fox-charcoal p-8">
