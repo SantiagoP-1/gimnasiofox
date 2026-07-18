@@ -44,9 +44,18 @@ function ScrollRow({
   const animClass = direction === "left" ? "animate-scroll-left" : "animate-scroll-right";
 
   return (
-    <div className="fox-fade-edges group w-full overflow-hidden">
+    <div
+      className="fox-fade-edges group w-full overflow-hidden"
+      tabIndex={0}
+      role="group"
+      aria-label="Reseñas — mantené el foco para pausar el desplazamiento"
+    >
       <div
-        className={cn("fox-ticker flex w-max items-stretch gap-5", animClass, "group-hover:[animation-play-state:paused]")}
+        className={cn(
+          "fox-ticker flex w-max items-stretch gap-5",
+          animClass,
+          "group-hover:[animation-play-state:paused] group-focus:[animation-play-state:paused]"
+        )}
         style={{ "--scroll-duration": `${duration}s` } as React.CSSProperties}
       >
         {[0, 1].map((copy) => (

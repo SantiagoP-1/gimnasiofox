@@ -89,11 +89,13 @@ export default function Footer() {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      title={social.note ? `${social.label} — ${social.note}` : social.label}
                       className="flex items-center gap-2 text-sm text-fox-gray transition-colors hover:text-fox-white"
                     >
                       <Icon className="h-4 w-4 shrink-0 text-fox-gold" aria-hidden="true" />
                       {social.label}
+                      {social.note && (
+                        <span className="text-xs text-fox-gray-dim">({social.note})</span>
+                      )}
                     </a>
                   </li>
                 );

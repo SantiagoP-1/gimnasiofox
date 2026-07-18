@@ -92,6 +92,7 @@ export const WHATSAPP_MESSAGES = {
   plans: "Hola! Quiero consultar por los planes y precios de FOX.",
   visit: "Hola! Quiero coordinar una visita para conocer las instalaciones.",
   routine: "Hola! Quiero solicitar mi rutina de entrenamiento personalizada.",
+  family: "Hola! Quiero consultar por los planes familiares de FOX.",
 };
 
 // Horario. Asunción: se muestra el mismo rango todos los días activos.
@@ -120,24 +121,13 @@ export type Plan = {
 
 export const PLANS: Plan[] = [
   {
-    id: "pase-libre",
-    name: "Pase Libre",
+    id: "mensual",
+    name: "Mensual",
     price: 45000,
     frequency: "Acceso todos los días",
     featured: true,
     perks: [
       "Sin límite de días por semana",
-      "Sector musculación + aeróbico",
-      "Seguimiento de rutina incluido",
-    ],
-  },
-  {
-    id: "plan-3x",
-    name: "3 veces por semana",
-    price: 40000,
-    frequency: "3 días semanales",
-    perks: [
-      "Ideal para rutinas combinadas",
       "Acceso a todos los sectores",
       "Seguimiento de rutina incluido",
     ],
@@ -145,14 +135,42 @@ export const PLANS: Plan[] = [
   {
     id: "plan-2x",
     name: "2 veces por semana",
-    price: 35000,
+    price: 40000,
     frequency: "2 días semanales",
     perks: [
-      "Para empezar con constancia",
+      "Ideal para mantener constancia",
       "Acceso a todos los sectores",
       "Seguimiento de rutina incluido",
     ],
   },
+];
+
+export type ShortPass = {
+  id: string;
+  name: string;
+  price: number;
+  duration: string;
+};
+
+export const SHORT_PASSES: ShortPass[] = [
+  { id: "medio-mes", name: "Medio mes", price: 30000, duration: "15 días" },
+  { id: "semana", name: "1 semana", price: 20000, duration: "7 días" },
+  { id: "dia", name: "1 día", price: 10000, duration: "Pase diario" },
+];
+
+export type FamilyPromo = {
+  id: string;
+  name: string;
+  price: number;
+  members: number;
+};
+
+// Asunción: la membresía familiar se asume de acceso mensual, igual que el
+// plan "Mensual" individual — no se especificó la cadencia, confirmar con
+// el cliente si es distinto.
+export const FAMILY_PROMOS: FamilyPromo[] = [
+  { id: "familia-3", name: "Familia 3 integrantes", price: 110000, members: 3 },
+  { id: "familia-4", name: "Familia 4 integrantes", price: 130000, members: 4 },
 ];
 
 export const KEY_ONBOARDING = {
@@ -327,7 +345,7 @@ export const FAQS: FAQItem[] = [
     id: "planes",
     question: "¿Qué planes tiene FOX?",
     answer:
-      "Tenés tres opciones: Pase Libre (acceso todos los días) a $45.000, un plan de 3 veces por semana a $40.000 y un plan de 2 veces por semana a $35.000. Todos incluyen acceso a musculación, aeróbico y seguimiento de rutina.",
+      "Tenés un plan Mensual (acceso todos los días) a $45.000, uno de 2 veces por semana a $40.000, y pases por tiempo: medio mes a $30.000, una semana a $20.000 y un día a $10.000. También hay planes familiares para 3 o 4 integrantes. Todos incluyen acceso a musculación, aeróbico y seguimiento de rutina.",
   },
   {
     id: "ingreso",

@@ -6,6 +6,8 @@ import {
   MAPS,
   SCHEDULE,
   PLANS,
+  SHORT_PASSES,
+  FAMILY_PROMOS,
   FACILITIES,
   SERVICES,
   PAYMENT_METHODS,
@@ -70,19 +72,41 @@ export default function StructuredData() {
       name: item.title,
       value: true,
     })),
-    makesOffer: PLANS.map((plan) => ({
-      "@type": "Offer",
-      name: plan.name,
-      description: plan.frequency,
-      price: plan.price,
-      priceCurrency: "ARS",
-      priceSpecification: {
-        "@type": "UnitPriceSpecification",
+    makesOffer: [
+      ...PLANS.map((plan) => ({
+        "@type": "Offer",
+        name: plan.name,
+        description: plan.frequency,
         price: plan.price,
         priceCurrency: "ARS",
-        unitText: "MONTH",
-      },
-    })),
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: plan.price,
+          priceCurrency: "ARS",
+          unitText: "MONTH",
+        },
+      })),
+      ...SHORT_PASSES.map((pass) => ({
+        "@type": "Offer",
+        name: pass.name,
+        description: `Pase válido por ${pass.duration}`,
+        price: pass.price,
+        priceCurrency: "ARS",
+      })),
+      ...FAMILY_PROMOS.map((promo) => ({
+        "@type": "Offer",
+        name: promo.name,
+        description: `Membresía mensual para ${promo.members} integrantes`,
+        price: promo.price,
+        priceCurrency: "ARS",
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          price: promo.price,
+          priceCurrency: "ARS",
+          unitText: "MONTH",
+        },
+      })),
+    ],
     // Reseñas reales del gimnasio, sin inventar una calificación numérica:
     // no tenemos el conteo/promedio real de Google, así que no se incluye
     // `aggregateRating` ni `reviewRating` para no generar un rich result falso.
