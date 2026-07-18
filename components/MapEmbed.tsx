@@ -11,7 +11,7 @@ export default function MapEmbed({ src, title }: { src: string; title: string })
       <button
         type="button"
         onClick={() => setLoaded(true)}
-        className="flex h-full w-full flex-col items-center justify-center gap-3 bg-fox-charcoal text-fox-gray transition-colors hover:text-fox-white focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-fox-gold"
+        className="flex h-full w-full flex-col items-center justify-center gap-3 bg-fox-charcoal text-fox-gray transition-colors hover:text-fox-white focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-fox-gold"
       >
         <span className="flex h-14 w-14 items-center justify-center rounded-full border border-fox-gold/30 bg-fox-gold/10">
           <MapPin className="h-6 w-6 text-fox-gold" aria-hidden="true" />

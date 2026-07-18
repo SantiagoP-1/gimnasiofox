@@ -13,7 +13,7 @@ const stats = [
   },
   {
     icon: CalendarCheck,
-    value: 6,
+    value: 5,
     suffix: "",
     label: "Días a la semana para entrenar",
   },

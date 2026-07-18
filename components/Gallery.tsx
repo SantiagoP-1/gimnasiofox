@@ -11,11 +11,6 @@ const GalleryCarousel = dynamic(() =>
   import("@/components/GalleryCarousel").then((mod) => mod.GalleryCarousel)
 );
 
-// Nota para Santi: las marcadas como ilustrativas son generadas con IA
-// (mientras no haya fotos reales de esos sectores). La de "Sector
-// musculación" es una foto real del gimnasio. Reemplazar cada import por la
-// foto real correspondiente a medida que estén disponibles — los nombres de
-// archivo en /public/images/ quedan documentados en el README.
 const SLIDES: CarouselSlide[] = [
   {
     title: "Sector musculación",

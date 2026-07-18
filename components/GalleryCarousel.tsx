@@ -52,7 +52,7 @@ function Slide({ slide, index, current, total, onSelect }: SlideProps) {
       aria-roledescription="slide"
       aria-label={`${slide.title} — ${index + 1} de ${total}`}
       tabIndex={0}
-      className="relative mx-3 flex h-72 w-72 shrink-0 flex-col items-center justify-center [perspective:1200px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fox-gold sm:h-96 sm:w-96 lg:h-[26rem] lg:w-[26rem]"
+      className="relative mx-3 flex h-72 w-72 shrink-0 flex-col items-center justify-center perspective-distant focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fox-gold sm:h-96 sm:w-96 lg:h-104 lg:w-104"
       onClick={() => onSelect(index)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {

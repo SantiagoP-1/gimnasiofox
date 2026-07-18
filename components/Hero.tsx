@@ -14,7 +14,7 @@ const HIGHLIGHT_ICONS: Record<HeroHighlight["icon"], typeof Dumbbell> = {
 
 export default function Hero() {
   return (
-    <section id="inicio" className="fox-noise relative flex min-h-[100svh] items-center overflow-hidden">
+    <section id="inicio" className="fox-noise relative flex min-h-svh items-center overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src={heroImg}

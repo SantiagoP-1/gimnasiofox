@@ -107,14 +107,7 @@ export default function StructuredData() {
         },
       })),
     ],
-    // Reseñas reales del gimnasio, sin inventar una calificación numérica:
-    // no tenemos el conteo/promedio real de Google, así que no se incluye
-    // `aggregateRating` ni `reviewRating` para no generar un rich result falso.
-    // Reseñas reales con su calificación real (todas 5 estrellas, confirmado
-    // por el cliente). No se agrega `aggregateRating`: estas son las reseñas
-    // que nos pasó, no necesariamente el listado completo de su ficha de
-    // Google, así que un promedio calculado acá podría no coincidir con el
-    // real y generar una inconsistencia frente a Google.
+    
     review: TESTIMONIAL_ROWS.flatMap((row) => row.items).map((t) => ({
       "@type": "Review",
       reviewBody: t.quote,

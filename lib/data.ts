@@ -1,9 +1,3 @@
-// ============================================================================
-// CENTRO DE ENTRENAMIENTO FOX — contenido central del sitio
-// Editar este archivo para actualizar textos, precios u horarios sin tocar
-// el markup de los componentes.
-// ============================================================================
-
 export const SITE = {
   name: "FOX",
   fullName: "Centro de Entrenamiento FOX",
@@ -12,16 +6,9 @@ export const SITE = {
   province: "Buenos Aires, Argentina",
   owner: "Francisco Balinotti",
   phoneDisplay: "+54 2266 47-8000",
-  // Assumption: WhatsApp para Argentina requiere el 9 luego del código de país
-  // para números vinculados a líneas móviles. Verificar en WhatsApp Business
-  // que este formato conecte correctamente antes de publicar.
   whatsappNumber: "5492266478000",
 };
 
-// Dominio real del sitio una vez publicado. Hoy apunta al subdominio
-// gratuito de Vercel (gimnasiofox.vercel.app). Si más adelante conectan un
-// dominio propio (ej. fox-balcarce.com.ar), actualizar solo esta línea y
-// todo el SEO (canonical, OG, sitemap, JSON-LD) se actualiza solo.
 export const SITE_URL = "https://gimnasiofox.vercel.app";
 
 export const INSTAGRAM = {
@@ -34,8 +21,6 @@ export type SocialLink = {
   label: string;
   handle: string;
   url: string;
-  // Aclaración honesta: Facebook y YouTube son del perfil personal de
-  // Francisco (el profesor/dueño), no una página dedicada al gimnasio.
   note?: string;
 };
 
@@ -62,20 +47,13 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
 ];
 
-// No se proveyó la dirección exacta directamente, así que `streetAddress` se
-// completó con lo que aparece en un listado público (Wellhub) para "Centro de
-// Entrenamiento Fox" en Balcarce. Verificar que sea correcto antes de
-// publicar — si está mal, corregirlo acá y se actualiza en todo el sitio.
 export const ADDRESS = {
-  streetAddress: "Calle 17 774", // ⚠️ confirmar — fuente: listado de Wellhub, no confirmado por el cliente
+  streetAddress: "Calle 17 774",
   addressLocality: "Balcarce",
   addressRegion: "Buenos Aires",
   postalCode: "7620",
   addressCountry: "AR",
 };
-
-// Coordenadas y links reales, tomados directamente del Google Maps del
-// negocio (confiables al 100%, a diferencia de la dirección de arriba).
 export const MAPS = {
   latitude: -37.84628021982904,
   longitude: -58.26695703316607,
@@ -95,16 +73,12 @@ export const WHATSAPP_MESSAGES = {
   family: "Hola! Quiero consultar por los planes familiares de FOX.",
 };
 
-// Horario. Asunción: se muestra el mismo rango todos los días activos.
-// No se especificaron días exactos en el brief — ajustar `days` si el
-// gimnasio no abre los domingos o tiene un horario reducido los sábados.
 export const SCHEDULE = {
   openTime: "06:30",
   closeTime: "21:00",
   days: [
     { label: "Lunes a Viernes", hours: "06:30 – 21:00" },
-    { label: "Sábados", hours: "06:30 – 21:00" },
-    { label: "Domingos", hours: "Cerrado" },
+    { label: "Sabado y Domingos", hours: "Cerrado" },
   ],
   // 0 = Domingo ... 6 = Sábado
   openDays: [1, 2, 3, 4, 5, 6],
@@ -165,9 +139,6 @@ export type FamilyPromo = {
   members: number;
 };
 
-// Asunción: la membresía familiar se asume de acceso mensual, igual que el
-// plan "Mensual" individual — no se especificó la cadencia, confirmar con
-// el cliente si es distinto.
 export const FAMILY_PROMOS: FamilyPromo[] = [
   { id: "familia-3", name: "Familia 3 integrantes", price: 110000, members: 3 },
   { id: "familia-4", name: "Familia 4 integrantes", price: 130000, members: 4 },
