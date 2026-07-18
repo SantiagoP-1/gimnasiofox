@@ -5,7 +5,6 @@ import Reveal from "@/components/Reveal";
 export default function FinalCTA() {
   return (
     <section className="relative overflow-hidden border-t border-white/5 bg-fox-black py-24 sm:py-28">
-      {/* línea decorativa + glow muy sutil, no un bloque sólido */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-px w-2/3 -translate-x-1/2 bg-linear-to-r from-transparent via-fox-gold/60 to-transparent"
         aria-hidden="true"

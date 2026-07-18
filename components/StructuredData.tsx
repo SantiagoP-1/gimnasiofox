@@ -31,8 +31,6 @@ function buildAddress() {
     addressRegion: ADDRESS.addressRegion,
     addressCountry: ADDRESS.addressCountry,
   };
-  // streetAddress / postalCode se omiten a propósito: no se proveyó la
-  // dirección real y no queremos indexar un dato falso. Ver lib/data.ts.
   if (ADDRESS.streetAddress) address.streetAddress = ADDRESS.streetAddress;
   if (ADDRESS.postalCode) address.postalCode = ADDRESS.postalCode;
   return address;
