@@ -229,7 +229,7 @@ export const SERVICES: Service[] = [
   {
     id: "ingreso",
     title: "Ingreso con llave personal",
-    description: "Acceso individual mediante llave propia. Reposición ante pérdida: $3.000.",
+    description: "Acceso individual mediante llave propia.",
     icon: "key",
   },
   {
