@@ -78,7 +78,7 @@ export const SCHEDULE = {
   closeTime: "21:00",
   days: [
     { label: "Lunes a Viernes", hours: "06:30 – 21:00" },
-    { label: "Sabado y Domingos", hours: "Cerrado" },
+    { label: "Sábados y Domingos", hours: "Cerrado" },
   ],
   openDays: [1, 2, 3, 4, 5],
 };

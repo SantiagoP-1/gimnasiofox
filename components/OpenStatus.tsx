@@ -19,9 +19,11 @@ function getStatus() {
 
   return {
     isOpenNow,
-    label: isOpenNow
-      ? `Abierto ahora · Cierra a las ${SCHEDULE.closeTime}`
-      : `Cerrado ahora · Abre a las ${SCHEDULE.openTime}`,
+      label: isOpenNow
+        ? `Abierto ahora · Cierra a las ${SCHEDULE.closeTime}`
+        : !isOpenDay
+          ? `Cerrado ahora · Abrimos el Lunes a las ${SCHEDULE.openTime}`
+          : `Cerrado ahora · Abrimos hoy a las ${SCHEDULE.openTime}`,
   };
 }
 
