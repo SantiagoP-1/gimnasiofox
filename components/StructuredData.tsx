@@ -37,6 +37,9 @@ function buildAddress() {
 }
 
 export default function StructuredData() {
+  const allReviews = TESTIMONIAL_ROWS.flatMap((row) => row.items);
+  const averageRating = allReviews.reduce((sum, t) => sum + t.rating, 0) / allReviews.length;
+
   const data = {
     "@context": "https://schema.org",
     "@type": ["ExerciseGym", "SportsActivityLocation", "LocalBusiness"],
@@ -105,8 +108,14 @@ export default function StructuredData() {
         },
       })),
     ],
-    
-    review: TESTIMONIAL_ROWS.flatMap((row) => row.items).map((t) => ({
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: Number(averageRating.toFixed(1)),
+      reviewCount: allReviews.length,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: allReviews.map((t) => ({
       "@type": "Review",
       reviewBody: t.quote,
       author: { "@type": "Person", name: t.author },
