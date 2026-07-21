@@ -117,7 +117,7 @@ export default function PlansCarousel({ items }: { items: PlanCarouselItem[] }) 
         ))}
       </ul>
 
-      <div className="mt-6 flex items-center justify-end gap-3">
+      <div className="mt-6 flex items-center justify-center gap-3">
         <button
           type="button"
           onClick={() => scrollByCard(-1)}
