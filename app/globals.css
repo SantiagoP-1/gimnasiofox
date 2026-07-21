@@ -9,10 +9,7 @@
   --color-fox-gold-dim: #b38600;
   --color-fox-white: #ffffff;
   --color-fox-gray: #a1a1a1;
-  --color-fox-gray-dim: #6e6e6e;
-
-  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --color-fox-gray-dim: #868686;
 }
 
 @theme inline {
@@ -32,6 +29,7 @@
   --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
   --animate-scroll-left: scroll-left var(--scroll-duration, 45s) linear infinite;
   --animate-scroll-right: scroll-right var(--scroll-duration, 45s) linear infinite;
+  --animate-scroll-hint: scroll-hint 2.2s ease-in-out infinite;
 }
 
 * {
@@ -87,6 +85,17 @@ h1, h2, h3, h4, .font-display {
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes scroll-hint {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
   }
 }
 

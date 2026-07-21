@@ -1,15 +1,6 @@
-import { Dumbbell, Activity, Trees, ShowerHead, Lock, Bike, type LucideIcon } from "lucide-react";
-import { FACILITIES, type Facility } from "@/lib/data";
+import { FACILITIES } from "@/lib/data";
+import { FACILITY_ICONS } from "@/lib/icons";
 import SectionHeader from "@/components/SectionHeader";
-
-const ICONS: Record<Facility["icon"], LucideIcon> = {
-  dumbbell: Dumbbell,
-  activity: Activity,
-  trees: Trees,
-  shower: ShowerHead,
-  lock: Lock,
-  bike: Bike,
-};
 
 export default function Facilities() {
   return (
@@ -23,7 +14,7 @@ export default function Facilities() {
 
         <ul className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-white/8 bg-white/8 sm:grid-cols-2 lg:grid-cols-3">
           {FACILITIES.map((facility) => {
-            const Icon = ICONS[facility.icon];
+            const Icon = FACILITY_ICONS[facility.icon];
             return (
               <li key={facility.id} className="bg-fox-charcoal p-7 transition-colors duration-300 hover:bg-fox-charcoal-2">
                 <Icon className="h-5 w-5 text-fox-gold" strokeWidth={1.8} aria-hidden="true" />

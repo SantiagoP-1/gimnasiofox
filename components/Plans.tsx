@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import {
   PLANS,
   SHORT_PASSES,
@@ -8,7 +9,14 @@ import {
   currency,
 } from "@/lib/data";
 import SectionHeader from "@/components/SectionHeader";
-import PlansCarousel, { type PlanCarouselItem } from "@/components/PlansCarousel";
+import type { PlanCarouselItem } from "@/components/PlansCarousel";
+
+const PlansCarousel = dynamic(() => import("@/components/PlansCarousel"));
+
+const medioMes = SHORT_PASSES.find((pass) => pass.id === "medio-mes");
+const mensualSavingsPct = medioMes
+  ? Math.round((1 - PLANS.find((plan) => plan.id === "mensual")!.price / (medioMes.price * 2)) * 100)
+  : undefined;
 
 const ITEMS: PlanCarouselItem[] = [
   ...PLANS.map((plan) => ({
@@ -20,6 +28,10 @@ const ITEMS: PlanCarouselItem[] = [
     cadence: "/mes",
     perks: plan.perks,
     featured: plan.featured,
+    savingsNote:
+      plan.id === "mensual" && mensualSavingsPct
+        ? `Ahorrás ${mensualSavingsPct}% vs. 2 pases de medio mes`
+        : undefined,
     message: WHATSAPP_MESSAGES.plans,
   })),
   ...SHORT_PASSES.map((pass) => ({

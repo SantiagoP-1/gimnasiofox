@@ -117,7 +117,10 @@ export default function StaggerTestimonials({ testimonials }: { testimonials: Te
   }, []);
 
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: cardSize + 140 }}>
+    <div
+      className="relative w-full overflow-hidden [-webkit-mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] mask-[linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]"
+      style={{ height: cardSize + 140 }}
+    >
       <ul className="absolute inset-0">
         {list.map((item, index) => {
           const position =

@@ -1,7 +1,9 @@
-import { Clock, LayoutGrid, Wallet, CalendarCheck } from "lucide-react";
-import { FACILITIES, PLANS, PAYMENT_METHODS } from "@/lib/data";
+import { Clock, LayoutGrid, Star, CalendarCheck } from "lucide-react";
+import { FACILITIES, PLANS, TESTIMONIAL_ROWS } from "@/lib/data";
 import Reveal from "@/components/Reveal";
 import CountUp from "@/components/CountUp";
+
+const reviewCount = TESTIMONIAL_ROWS.flatMap((row) => row.items).length;
 
 const stats = [
   {
@@ -24,10 +26,10 @@ const stats = [
     label: "Espacios: musculación, aeróbico, patios y más",
   },
   {
-    icon: Wallet,
-    value: PAYMENT_METHODS.length,
+    icon: Star,
+    value: reviewCount,
     suffix: "",
-    label: "Medios de pago disponibles",
+    label: "Reseñas, todas 5★ en Google",
   },
 ];
 

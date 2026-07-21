@@ -1,5 +1,5 @@
-import { Clock } from "lucide-react";
-import { SCHEDULE } from "@/lib/data";
+import { Clock, MessageCircle } from "lucide-react";
+import { SCHEDULE, WHATSAPP_MESSAGES, whatsappLink } from "@/lib/data";
 import SectionHeader from "@/components/SectionHeader";
 import OpenStatus from "@/components/OpenStatus";
 
@@ -9,7 +9,7 @@ export default function Schedule() {
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <SectionHeader eyebrow="Horarios" title="Entrená cuando mejor te quede." align="center" />
 
-        <div className="mx-auto mt-10 max-w-2xl overflow-hidden rounded-lg border border-white/8 bg-fox-black">
+        <div className="mx-auto mt-14 max-w-2xl overflow-hidden rounded-lg border border-white/8 bg-fox-black">
           <div className="flex items-center gap-3 border-b border-white/8 px-8 py-6">
             <Clock className="h-5 w-5 text-fox-gold" aria-hidden="true" />
             <OpenStatus />
@@ -28,6 +28,19 @@ export default function Schedule() {
             ))}
           </ul>
         </div>
+
+        <p className="mx-auto mt-6 max-w-2xl text-center text-sm text-fox-gray">
+          ¿Querés conocer el predio antes de sumarte?{" "}
+          <a
+            href={whatsappLink(WHATSAPP_MESSAGES.visit)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-semibold text-fox-gold transition-colors hover:text-white"
+          >
+            Coordiná tu visita
+            <MessageCircle className="h-4 w-4" aria-hidden="true" />
+          </a>
+        </p>
       </div>
     </section>
   );

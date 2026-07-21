@@ -24,9 +24,6 @@ function Slide({ slide, index, current, total, onSelect }: SlideProps) {
   const slideRef = useRef<HTMLLIElement>(null);
   const isActive = current === index;
 
-  // Paralaje sutil siguiendo el mouse — se escribe directo en el elemento
-  // (sin requestAnimationFrame corriendo indefinidamente de fondo, que es lo
-  // que hacía el componente original incluso sin que nadie tocara el mouse).
   const handleMouseMove = (event: React.MouseEvent<HTMLLIElement>) => {
     if (!isActive) return;
     const el = slideRef.current;
@@ -130,9 +127,6 @@ export function GalleryCarousel({ slides }: { slides: CarouselSlide[] }) {
     return () => window.removeEventListener("resize", recalc);
   }, [current, slides.length]);
 
-  // Sin listener en `window`: las flechas del teclado solo navegan el
-  // carrusel cuando el foco está dentro de él (el evento burbujea desde el
-  // botón o la slide enfocada), no en cualquier parte de la página.
   const handleContainerKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === "ArrowLeft") {
       e.preventDefault();

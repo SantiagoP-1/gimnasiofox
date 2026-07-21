@@ -1,23 +1,6 @@
-import {
-  ClipboardList,
-  Zap,
-  ShieldCheck,
-  Stethoscope,
-  KeyRound,
-  Thermometer,
-  type LucideIcon,
-} from "lucide-react";
-import { SERVICES, type Service } from "@/lib/data";
+import { SERVICES } from "@/lib/data";
+import { SERVICE_ICONS } from "@/lib/icons";
 import SectionHeader from "@/components/SectionHeader";
-
-const ICONS: Record<Service["icon"], LucideIcon> = {
-  clipboard: ClipboardList,
-  zap: Zap,
-  shield: ShieldCheck,
-  stethoscope: Stethoscope,
-  key: KeyRound,
-  thermometer: Thermometer,
-};
 
 export default function Services() {
   return (
@@ -31,7 +14,7 @@ export default function Services() {
 
         <ul className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-white/8 bg-white/8 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((service) => {
-            const Icon = ICONS[service.icon];
+            const Icon = SERVICE_ICONS[service.icon];
             return (
               <li key={service.id} className="flex gap-4 bg-fox-black p-7 transition-colors duration-300 hover:bg-fox-charcoal-2">
                 <Icon className="h-5 w-5 shrink-0 text-fox-gold" strokeWidth={1.8} aria-hidden="true" />

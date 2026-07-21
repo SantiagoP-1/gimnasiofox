@@ -71,6 +71,7 @@ export const WHATSAPP_MESSAGES = {
   visit: "Hola! Quiero coordinar una visita para conocer las instalaciones.",
   routine: "Hola! Quiero solicitar mi rutina de entrenamiento personalizada.",
   family: "Hola! Quiero consultar por los planes familiares de FOX.",
+  faq: "Hola! Tengo una consulta sobre FOX.",
 };
 
 export const SCHEDULE = {

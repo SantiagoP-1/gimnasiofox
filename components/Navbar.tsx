@@ -11,12 +11,32 @@ import logo from "@/public/images/logo-white.webp";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map((link) => document.querySelector(link.href)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveHref(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -45,10 +65,19 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="group relative inline-block py-1 text-sm font-medium text-fox-gray transition-colors hover:text-fox-white"
+                aria-current={activeHref === link.href ? "true" : undefined}
+                className={cn(
+                  "group relative inline-block py-1 text-sm font-medium transition-colors hover:text-fox-white",
+                  activeHref === link.href ? "text-fox-white" : "text-fox-gray"
+                )}
               >
                 {link.label}
-                <span className="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-fox-gold transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                <span
+                  className={cn(
+                    "absolute inset-x-0 -bottom-0.5 h-px origin-left bg-fox-gold transition-transform duration-300 ease-out",
+                    activeHref === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  )}
+                />
               </a>
             </li>
           ))}

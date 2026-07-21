@@ -1,16 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource/poppins/500.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
-import "@fontsource/poppins/800.css";
-import "@fontsource/montserrat/400.css";
-import "@fontsource/montserrat/500.css";
-import "@fontsource/montserrat/600.css";
-import "@fontsource/montserrat/700.css";
 import "./globals.css";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import StructuredData from "@/components/StructuredData";
 import { SITE, SITE_URL } from "@/lib/data";
+import { poppins, montserrat } from "./fonts";
 
 const title = "Centro de Entrenamiento FOX | Gimnasio en Balcarce";
 const description =
@@ -81,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-AR">
+    <html lang="es-AR" className={`${poppins.variable} ${montserrat.variable}`}>
       <body className="bg-fox-black text-fox-white antialiased">
         <StructuredData />
         {children}

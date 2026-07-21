@@ -15,16 +15,14 @@ export default function Footer() {
 
   return (
     <footer className="relative border-t border-white/5 bg-fox-black pt-16 pb-8">
-      {/* línea decorativa + glow muy sutil arriba del footer, en vez de un
-          borde plano — mismo lenguaje visual que ya usamos en el CTA final */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-px w-1/2 -translate-x-1/2 -translate-y-1/2 bg-linear-to-r from-transparent via-white/25 to-transparent"
         aria-hidden="true"
       />
 
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-4">
-          <div className="col-span-2 sm:col-span-4 xl:col-span-1">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-4">
+          <div className="col-span-2 lg:col-span-1">
             <a href="#inicio" aria-label="Centro de Entrenamiento FOX — inicio">
               <Image src={logo} alt="Centro de Entrenamiento FOX" className="h-10 w-auto" />
             </a>

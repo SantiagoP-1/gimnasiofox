@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Plus } from "lucide-react";
-import { FAQS } from "@/lib/data";
+import { MessageCircle, Plus } from "lucide-react";
+import { FAQS, WHATSAPP_MESSAGES, whatsappLink } from "@/lib/data";
 import SectionHeader from "@/components/SectionHeader";
 
 export default function FAQ() {
@@ -14,7 +14,7 @@ export default function FAQ() {
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <SectionHeader eyebrow="Preguntas frecuentes" title="Todo lo que necesitás saber." align="center" />
 
-        <div className="mt-12 flex flex-col gap-2">
+        <div className="mt-14 flex flex-col gap-2">
           {FAQS.map((faq) => {
             const isOpen = openId === faq.id;
             return (
@@ -53,6 +53,19 @@ export default function FAQ() {
             );
           })}
         </div>
+
+        <p className="mt-10 text-center text-sm text-fox-gray">
+          ¿Tenés otra consulta?{" "}
+          <a
+            href={whatsappLink(WHATSAPP_MESSAGES.faq)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 font-semibold text-fox-gold transition-colors hover:text-white"
+          >
+            Escribinos por WhatsApp
+            <MessageCircle className="h-4 w-4" aria-hidden="true" />
+          </a>
+        </p>
       </div>
     </section>
   );

@@ -14,6 +14,7 @@ export type PlanCarouselItem = {
   cadence?: string;
   perks?: string[];
   featured?: boolean;
+  savingsNote?: string;
   message: string;
 };
 
@@ -50,6 +51,12 @@ function PlanCard({ item }: { item: PlanCarouselItem }) {
           </span>
         )}
       </div>
+
+      {item.savingsNote && (
+        <p className={cn("mt-1.5 text-xs font-semibold", item.featured ? "text-fox-black/70" : "text-fox-gold")}>
+          {item.savingsNote}
+        </p>
+      )}
 
       {item.perks && (
         <ul className="mt-6 flex flex-col gap-2.5 text-left">
