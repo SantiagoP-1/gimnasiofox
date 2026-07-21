@@ -9,6 +9,7 @@ type RevealProps = {
   y?: number;
   className?: string;
   as?: "div" | "li";
+  onViewportEnter?: () => void;
 };
 
 export default function Reveal({
@@ -17,6 +18,7 @@ export default function Reveal({
   y = 24,
   className,
   as = "div",
+  onViewportEnter,
 }: RevealProps) {
   const MotionTag = as === "li" ? motion.li : motion.div;
 
@@ -27,6 +29,7 @@ export default function Reveal({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-20px" }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+      onViewportEnter={onViewportEnter}
     >
       {children}
     </MotionTag>

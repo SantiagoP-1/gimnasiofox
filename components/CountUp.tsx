@@ -1,33 +1,32 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useInView, useMotionValue, animate } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useMotionValue, animate } from "framer-motion";
 
 type CountUpProps = {
   value: number;
   suffix?: string;
   decimals?: number;
   duration?: number;
+  start?: boolean;
 };
 
-export default function CountUp({ value, suffix = "", decimals = 0, duration = 1.4 }: CountUpProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+export default function CountUp({ value, suffix = "", decimals = 0, duration = 1.4, start = false }: CountUpProps) {
   const motionValue = useMotionValue(0);
   const [display, setDisplay] = useState((0).toFixed(decimals));
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!start) return;
     const controls = animate(motionValue, value, {
       duration,
       ease: [0.22, 1, 0.36, 1],
       onUpdate: (latest) => setDisplay(latest.toFixed(decimals)),
     });
     return controls.stop;
-  }, [isInView, motionValue, value, duration, decimals]);
+  }, [start, motionValue, value, duration, decimals]);
 
   return (
-    <span ref={ref}>
+    <span>
       {display}
       {suffix}
     </span>
